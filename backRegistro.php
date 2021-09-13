@@ -15,13 +15,18 @@
     $conn = mysqli_connect($servername, $username, $password, $database);    
 
     $correo = utf8_decode($_POST['correo']);
-    echo "Se ha registrado ",$correo,".";
+    $contrasena = utf8_decode($_POST['contrasena']);
+    $nombres = utf8_decode($_POST['nombres']);
+    $a_pat = utf8_decode($_POST['a_paterno']);
+    $a_mat = utf8_decode($_POST['a_materno']);
+    //echo "Se ha registrado ",$correo,".";
 ?>
 
 <?php
-    $consulta = mysqli_query($conn, "SELECT * FROM usuario");
-    mysqli_data_seek ($consulta, 0);
-    $datos= mysqli_fetch_array($consulta);
+    $consulta = mysqli_query($conn, "INSERT INTO usuario (nombres,a_paterno,a_materno,correo,contrasena) 
+    values ('$nombres','$a_pat','$a_mat','$correo','$contrasena')");
+    //mysqli_data_seek ($consulta, 0);
+    //$datos= mysqli_fetch_array($consulta);
 
     //echo "- Nombre: ".$datos['nombres']."<br/>";
     //echo "- Nombre: ".$datos['a_paterno']."<br/>";
