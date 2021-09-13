@@ -19,12 +19,16 @@
 ?>
 
 <?php
-    $consulta = mysqli_query($conn, "SELECT * FROM usuario WHERE correo = '$correo' AND contrasena ='$contrasena'"); 
+    $consulta = mysqli_query($conn, "SELECT * FROM usuario 
+    WHERE correo = '$correo' AND contrasena ='$contrasena'"); 
     mysqli_data_seek ($consulta, 0);
     $datos= mysqli_fetch_array($consulta);
 
     echo "- Bienvenido: ".$datos['nombres']."<br/>";
-    //echo "- Nombre: ".$datos['a_paterno']."<br/>";
+    echo " ".$datos['a_paterno']."<br/>";
+    echo " ".$datos['a_materno']."<br/>";
 ?>
+<a href="respuesta.php">Ir a respuesta.php</a>
+<a href="modificar.php?variable=<?php echo urlencode("$correo");?>">Modificar datos</a>
 </body>
 </html>
