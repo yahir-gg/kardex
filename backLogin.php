@@ -16,6 +16,17 @@
 
     $correo = utf8_decode($_POST['correo']);
     $contrasena = utf8_decode($_POST['contrasena']);
+    $correo_str = str_split($correo);
+    $lon_correo = strlen($correo);
+
+    for ($i=0;$i<$lon_correo;$i++){
+        if($correo_str[$i]=="@"){
+            if($correo_str[$i+1]=="g"){
+                $tipo = 1;
+                echo $tipo;
+            }
+        }
+    }
 ?>
 
 <?php

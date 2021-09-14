@@ -20,11 +20,25 @@
     $a_pat = utf8_decode($_POST['a_paterno']);
     $a_mat = utf8_decode($_POST['a_materno']);
     //echo "Se ha registrado ",$correo,".";
+
+    $correo_str = str_split($correo);
+    $lon_correo = strlen($correo);
+
+    for ($i=0;$i<$lon_correo;$i++){
+        if($correo_str[$i]=="@"){
+            if($correo_str[$i+1]=="a"){
+                $tipo = 1;
+                echo $tipo;
+            }else{
+                $tipo=2;
+            }
+        }
+    }
 ?>
 
 <?php
-    $consulta = mysqli_query($conn, "INSERT INTO usuario (nombres,a_paterno,a_materno,correo,contrasena) 
-    values ('$nombres','$a_pat','$a_mat','$correo','$contrasena')");
+    $consulta = mysqli_query($conn, "INSERT INTO usuario (nombres,a_paterno,a_materno,correo,contrasena,tipo) 
+    values ('$nombres','$a_pat','$a_mat','$correo','$contrasena',$tipo)");
     //mysqli_data_seek ($consulta, 0);
     //$datos= mysqli_fetch_array($consulta);
 
