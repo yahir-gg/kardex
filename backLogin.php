@@ -16,17 +16,8 @@
 
     $correo = utf8_decode($_POST['correo']);
     $contrasena = utf8_decode($_POST['contrasena']);
-    $correo_str = str_split($correo);
-    $lon_correo = strlen($correo);
-
-    for ($i=0;$i<$lon_correo;$i++){
-        if($correo_str[$i]=="@"){
-            if($correo_str[$i+1]=="g"){
-                $tipo = 1;
-                echo $tipo;
-            }
-        }
-    }
+    $anio = $correo[1] . $correo[2];
+    
 ?>
 
 <?php
@@ -39,7 +30,7 @@
     echo " ".$datos['a_paterno']."<br/>";
     echo " ".$datos['a_materno']."<br/>";
 ?>
-<a href="respuesta.php">Ir a respuesta.php</a>
+<a href="registroAvances.php">Registrar avance</a>
 <a href="modificar.php?variable=<?php echo urlencode("$correo");?>">Modificar datos</a>
 </body>
 </html>
